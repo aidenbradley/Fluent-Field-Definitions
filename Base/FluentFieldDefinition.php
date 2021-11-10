@@ -11,7 +11,7 @@ abstract class FluentFieldDefinition extends BaseFieldDefinition
 
     public static function make(): self
     {
-        return self::create(static::fieldType())->setDefinitions();
+        return static::create(static::fieldType());
     }
 
     public function setLabel($label)
