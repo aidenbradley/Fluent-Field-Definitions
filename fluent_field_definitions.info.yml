@@ -3,4 +3,5 @@ type: module
 description: 'Provides better developer experience to create base field definitions'
 package: Custom
 version: VERSION
+hidden: true
 core_version_requirement: ^8 || ^9
