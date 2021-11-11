@@ -9,7 +9,8 @@ abstract class FluentFieldDefinition extends BaseFieldDefinition
 {
     abstract public static function fieldType(): string;
 
-    public static function make(): self
+    /** @return static */
+    public static function make()
     {
         return static::create(static::fieldType());
     }

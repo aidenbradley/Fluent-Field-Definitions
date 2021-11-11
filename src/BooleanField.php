@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\fluent_field_definition;
+namespace Drupal\fluent_field_definitions;
 
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\fluent_field_definitions\Base\FluentFieldDefinition;
