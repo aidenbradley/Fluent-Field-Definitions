@@ -59,10 +59,6 @@ class BooleanFieldTest extends KernelTestBase
 
         $entityFieldManager = \Drupal::service('entity_field.manager');
         $fields = $entityFieldManager->getFieldDefinitions('node', 'page');
-
-        dump(array_keys($fields));
-
-//        dump($node->get($field->getName())->getValue());
     }
 
     private function addFieldDefinition(FluentFieldDefinition $field, string $entityType): void
