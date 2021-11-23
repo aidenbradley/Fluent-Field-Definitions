@@ -18,10 +18,13 @@ class BooleanFieldTest extends KernelTestBase
         'fluent_field_definitions',
     ];
 
+    /** @var \Drupal\Core\Entity\EntityDefinitionUpdateManager */
     protected $entityDefinitionUpdateManager;
 
+    /** @var \Drupal\Core\Entity\EntityFieldManager */
     protected $entityFieldManager;
 
+    /** @var \Drupal\Core\Database\Connection */
     protected $database;
 
     protected function setUp()
@@ -56,9 +59,6 @@ class BooleanFieldTest extends KernelTestBase
             'boolean_field' => 0,
         ]);
         $node->save();
-
-        $entityFieldManager = \Drupal::service('entity_field.manager');
-        $fields = $entityFieldManager->getFieldDefinitions('node', 'page');
     }
 
     private function addFieldDefinition(FluentFieldDefinition $field, string $entityType): void
@@ -66,7 +66,7 @@ class BooleanFieldTest extends KernelTestBase
         $this->entityDefinitionUpdateManager->installFieldStorageDefinition(
             $field->getName(),
             $entityType,
-            $entityType,
+            $field->getProvider(),
             $field
         );
 
