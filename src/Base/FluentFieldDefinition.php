@@ -10,9 +10,15 @@ abstract class FluentFieldDefinition extends BaseFieldDefinition
     abstract public static function fieldType(): string;
 
     /** @return static */
-    public static function make()
+    public static function make(?string $name = null)
     {
-        return static::create(static::fieldType());
+        $field = static::create(static::fieldType());
+
+        if ($name !== null) {
+            $field->setName($name);
+        }
+
+        return $field;
     }
 
     public function setLabel($label)
