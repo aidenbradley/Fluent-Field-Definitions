@@ -22,7 +22,7 @@ abstract class FluentFieldDefinitionKernelTestBase extends KernelTestBase
         $this->installConfig('field');
     }
 
-    protected function installField(FluentFieldDefinition $field, string $entityType): void
+    protected function installField(FluentFieldDefinition $field): void
     {
         $this->container->get('state')->set('fluent_field_definitions_test.field_to_install', serialize($field));
     }

@@ -11,9 +11,6 @@ use Drupal\Tests\system\Functional\Entity\Traits\EntityDefinitionTestTrait;
 
 class BooleanFieldTest extends FluentFieldDefinitionKernelTestBase
 {
-    use EntityDefinitionTestTrait,
-        UseCacheBackendTrait;
-
     /** @var string[] */
     protected static $modules = [
         'node',
@@ -40,7 +37,7 @@ class BooleanFieldTest extends FluentFieldDefinitionKernelTestBase
         $field = BooleanField::make('boolean_field')
             ->onLabel('We are on');
 
-        $this->installField($field, 'node');
+        $this->installField($field);
 
         $node = Node::create([
             'nid' => 1,
@@ -63,7 +60,7 @@ class BooleanFieldTest extends FluentFieldDefinitionKernelTestBase
         $field = BooleanField::make('boolean_field')
             ->offLabel('We are off');
 
-        $this->installField($field, 'node');
+        $this->installField($field);
 
         $node = Node::create([
             'nid' => 1,

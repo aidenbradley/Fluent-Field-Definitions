@@ -33,7 +33,6 @@ class FluentFieldDefinitionTest extends FluentFieldDefinitionKernelTestBase
     public function set_label()
     {
         $field = StringField::make('string_field')
-            ->setName('text_field')
             ->setLabel('This is my label');
 
         $this->installField($field);
@@ -49,7 +48,83 @@ class FluentFieldDefinitionTest extends FluentFieldDefinitionKernelTestBase
 
         $this->assertEquals(
             'This is my label',
-            $node->get('text_field')->getFieldDefinition()->getLabel()
+            $node->get('string_field')->getFieldDefinition()->getLabel()
         );
+    }
+
+    /** @test */
+    public function with_configurable_form(): void
+    {
+        $field = StringField::make('string_field')
+            ->withConfigurableForm();
+
+        $this->installField($field);
+
+        $node = Node::create([
+            'nid' => 1,
+            'title' => 'test',
+            'type' => 'page',
+            'string_field' => 'test',
+        ]);
+        $node->save();
+
+        $this->assertTrue($node->get('string_field')->getFieldDefinition()->isDisplayConfigurable('form'));
+    }
+
+    /** @test */
+    public function non_configurable_form(): void
+    {
+        $field = StringField::make('string_field')
+            ->nonConfigurableForm();
+
+        $this->installField($field);
+
+        $node = Node::create([
+            'nid' => 1,
+            'title' => 'test',
+            'type' => 'page',
+            'string_field' => 'test',
+        ]);
+        $node->save();
+
+        $this->assertFalse($node->get('string_field')->getFieldDefinition()->isDisplayConfigurable('form'));
+    }
+
+    /** @test */
+    public function with_configurable_view(): void
+    {
+        $field = StringField::make('string_field')
+            ->withConfigurableView();
+
+        $this->installField($field);
+
+        $node = Node::create([
+            'nid' => 1,
+            'title' => 'test',
+            'type' => 'page',
+            'string_field' => 'test',
+        ]);
+        $node->save();
+
+        $this->assertTrue($node->get('string_field')->getFieldDefinition()->isDisplayConfigurable('view'));
+    }
+
+    /** @test */
+    public function non_configurable_view(): void
+    {
+        $field = StringField::make('string_field')
+            ->nonConfigurableView();
+
+        $this->installField($field);
+
+        $node = Node::create([
+            'nid' => 1,
+            'title' => 'test',
+            'type' => 'page',
+            'string_field' => 'test',
+        ]);
+        $node->save();
+
+        $this->assertFalse($node->get('string_field')->getFieldDefinition()->isDisplayConfigurable('view'));
     }
 }

@@ -35,9 +35,23 @@ abstract class FluentFieldDefinition extends BaseFieldDefinition
         return $this;
     }
 
+    public function nonConfigurableForm(): self
+    {
+        $this->setDisplayConfigurable('form', false);
+
+        return $this;
+    }
+
     public function withConfigurableView(): self
     {
         $this->setDisplayConfigurable('view', true);
+
+        return $this;
+    }
+
+    public function nonConfigurableView(): self
+    {
+        $this->setDisplayConfigurable('view', false);
 
         return $this;
     }
