@@ -8,13 +8,13 @@ function fluent_field_definitions_test_entity_base_field_info(EntityTypeInterfac
     $fields = [];
 
     /** @var BaseFieldDefinition[] $fields */
-    $installField = (array) \Drupal::state()->get('fluent_field_definitions_test.field_to_install');
+    $installField = \Drupal::state()->get('fluent_field_definitions_test.field_to_install');
 
-    if ($installField === []) {
+    if ($installField === null) {
         return $fields;
     }
 
-    $field = unserialize($installField[0]);
+    $field = unserialize($installField);
 
     if ($field instanceof BaseFieldDefinition) {
         $fields[$field->getName()] = $field;
