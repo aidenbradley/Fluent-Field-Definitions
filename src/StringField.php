@@ -2,9 +2,9 @@
 
 namespace Drupal\fluent_field_definitions;
 
-use Drupal\fluent_field_definitions\Base\FluentFieldDefinition;
+use Drupal\fluent_field_definitions\Base\StringFieldBase;
 
-class StringField extends FluentFieldDefinition
+class StringField extends StringFieldBase
 {
     public static function fieldType(): string
     {
@@ -21,20 +21,6 @@ class StringField extends FluentFieldDefinition
     public function maxLength(int $length): self
     {
         $this->setSetting('max_length', $length);
-
-        return $this;
-    }
-
-    public function isCaseSensitive(): self
-    {
-        $this->setSetting('case_sensitive', true);
-
-        return $this;
-    }
-
-    public function notCaseSensitive(): self
-    {
-        $this->setSetting('case_sensitive', false);
 
         return $this;
     }
