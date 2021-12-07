@@ -2,7 +2,6 @@
 
 namespace Drupal\Tests\fluent_field_definitions\Kernel;
 
-use Drupal\Core\Cache\UseCacheBackendTrait;
 use Drupal\fluent_field_definitions\BooleanField;
 use Drupal\node\Entity\Node;
 use Drupal\node\Entity\NodeType;
