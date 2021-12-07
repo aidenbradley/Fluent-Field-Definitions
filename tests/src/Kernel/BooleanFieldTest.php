@@ -7,7 +7,6 @@ use Drupal\fluent_field_definitions\BooleanField;
 use Drupal\node\Entity\Node;
 use Drupal\node\Entity\NodeType;
 use Drupal\Tests\fluent_field_definitions\Kernel\Base\FluentFieldDefinitionKernelTestBase;
-use Drupal\Tests\system\Functional\Entity\Traits\EntityDefinitionTestTrait;
 
 class BooleanFieldTest extends FluentFieldDefinitionKernelTestBase
 {
