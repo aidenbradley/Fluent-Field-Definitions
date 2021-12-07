@@ -56,4 +56,27 @@ class BooleanFieldTest extends FluentFieldDefinitionKernelTestBase
             $node->get('boolean_field')->getFieldDefinition()->getSetting('on_label')
         );
     }
+
+    /** @test */
+    public function off_label(): void
+    {
+        $field = BooleanField::make('boolean_field')
+            ->offLabel('We are off');
+
+        $this->installField($field, 'node');
+
+        $node = Node::create([
+            'nid' => 1,
+            'title' => 'test',
+            'type' => 'page',
+            'boolean_field' => 1,
+        ]);
+        $node->save();
+        $node = Node::load(1);
+
+        $this->assertEquals(
+            'We are off',
+            $node->get('boolean_field')->getFieldDefinition()->getSetting('off_label')
+        );
+    }
 }
