@@ -5,3 +5,5 @@ package: Custom
 version: VERSION
 hidden: true
 core_version_requirement: ^8 || ^9
+dependencies:
+  - system
