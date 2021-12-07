@@ -22,8 +22,9 @@ abstract class FluentFieldDefinitionKernelTestBase extends KernelTestBase
         $this->installConfig('field');
     }
 
-    protected function installField(FluentFieldDefinition $field): void
+    protected function installField(FluentFieldDefinition $field, string $entityTypeId): void
     {
         $this->container->get('state')->set('fluent_field_definitions_test.field_to_install', serialize($field));
+        $this->container->get('state')->set('fluent_field_definitions_test.entity_type_id', $entityTypeId);
     }
 }

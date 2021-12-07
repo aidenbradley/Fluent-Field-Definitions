@@ -7,6 +7,10 @@ function fluent_field_definitions_test_entity_base_field_info(EntityTypeInterfac
 {
     $fields = [];
 
+    if(\Drupal::state()->get('fluent_field_definitions_test.entity_type_id') !== $entityType->id()) {
+        return $fields;
+    }
+
     /** @var BaseFieldDefinition[] $fields */
     $installField = \Drupal::state()->get('fluent_field_definitions_test.field_to_install');
 

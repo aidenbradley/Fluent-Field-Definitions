@@ -36,7 +36,7 @@ class BooleanFieldTest extends FluentFieldDefinitionKernelTestBase
         $field = BooleanField::make('boolean_field')
             ->onLabel('We are on');
 
-        $this->installField($field);
+        $this->installField($field, 'node');
 
         $node = Node::create([
             'nid' => 1,
@@ -59,7 +59,7 @@ class BooleanFieldTest extends FluentFieldDefinitionKernelTestBase
         $field = BooleanField::make('boolean_field')
             ->offLabel('We are off');
 
-        $this->installField($field);
+        $this->installField($field, 'node');
 
         $node = Node::create([
             'nid' => 1,

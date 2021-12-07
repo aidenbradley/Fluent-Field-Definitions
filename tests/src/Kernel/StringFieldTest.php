@@ -34,7 +34,7 @@ class StringFieldTest extends FluentFieldDefinitionKernelTestBase
     {
         $field = StringField::make('string_field')->isAscii();
 
-        $this->installField($field);
+        $this->installField($field, 'node');
 
         $node = Node::create([
             'nid' => 1,
@@ -55,7 +55,7 @@ class StringFieldTest extends FluentFieldDefinitionKernelTestBase
     {
         $field = StringField::make('string_field')->maxLength(101);
 
-        $this->installField($field);
+        $this->installField($field, 'node');
 
         $node = Node::create([
             'nid' => 1,
@@ -77,7 +77,7 @@ class StringFieldTest extends FluentFieldDefinitionKernelTestBase
     {
         $field = StringField::make('string_field')->isCaseSensitive();
 
-        $this->installField($field);
+        $this->installField($field, 'node');
 
         $node = Node::create([
             'nid' => 1,
@@ -96,7 +96,7 @@ class StringFieldTest extends FluentFieldDefinitionKernelTestBase
     {
         $field = StringField::make('string_field')->notCaseSensitive();
 
-        $this->installField($field);
+        $this->installField($field, 'node');
 
         $node = Node::create([
             'nid' => 1,

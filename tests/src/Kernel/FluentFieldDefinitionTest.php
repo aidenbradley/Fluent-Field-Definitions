@@ -35,7 +35,7 @@ class FluentFieldDefinitionTest extends FluentFieldDefinitionKernelTestBase
         $field = StringField::make('string_field')
             ->setLabel('This is my label');
 
-        $this->installField($field);
+        $this->installField($field, 'node');
 
         $node = Node::create([
             'nid' => 1,
@@ -58,7 +58,7 @@ class FluentFieldDefinitionTest extends FluentFieldDefinitionKernelTestBase
         $field = StringField::make('string_field')
             ->withConfigurableForm();
 
-        $this->installField($field);
+        $this->installField($field, 'node');
 
         $node = Node::create([
             'nid' => 1,
@@ -77,7 +77,7 @@ class FluentFieldDefinitionTest extends FluentFieldDefinitionKernelTestBase
         $field = StringField::make('string_field')
             ->nonConfigurableForm();
 
-        $this->installField($field);
+        $this->installField($field, 'node');
 
         $node = Node::create([
             'nid' => 1,
@@ -96,7 +96,7 @@ class FluentFieldDefinitionTest extends FluentFieldDefinitionKernelTestBase
         $field = StringField::make('string_field')
             ->withConfigurableView();
 
-        $this->installField($field);
+        $this->installField($field, 'node');
 
         $node = Node::create([
             'nid' => 1,
@@ -115,7 +115,7 @@ class FluentFieldDefinitionTest extends FluentFieldDefinitionKernelTestBase
         $field = StringField::make('string_field')
             ->nonConfigurableView();
 
-        $this->installField($field);
+        $this->installField($field, 'node');
 
         $node = Node::create([
             'nid' => 1,
