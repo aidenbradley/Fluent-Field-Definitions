@@ -1,0 +1,7 @@
+name: Fluent Field Definitions Test
+type: module
+description: 'Test module for fluent field definitions to install base field definitions'
+package: Custom
+version: VERSION
+hidden: true
+core_version_requirement: ^8 || ^9

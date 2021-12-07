@@ -1,0 +1,24 @@
+<?php
+
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
+
+function fluent_field_definitions_test_entity_base_field_info(EntityTypeInterface $entityType): array
+{
+    $fields = [];
+
+    /** @var BaseFieldDefinition[] $fields */
+    $installField = (array) \Drupal::state()->get('fluent_field_definitions_test.field_to_install');
+
+    if ($installField === []) {
+        return $fields;
+    }
+
+    $field = unserialize($installField[0]);
+
+    if ($field instanceof BaseFieldDefinition) {
+        $fields[$field->getName()] = $field;
+    }
+
+    return $fields;
+}
