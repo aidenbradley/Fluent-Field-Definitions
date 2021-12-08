@@ -10,3 +10,4 @@ dependencies:
   - link
   - text
   - datetime
+  - file

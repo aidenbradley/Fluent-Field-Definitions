@@ -41,6 +41,23 @@ class FileFieldTest extends FluentFieldDefinitionNodeKernelTestBase
     }
 
     /** @test */
+    public function file_storage_directory()
+    {
+        $field = FileField::make('file_field')->fileStorageDirectory('store/me/here');
+
+        $this->installField($field, 'node');
+
+        $node = $this->createNode([
+            'file_field' => '',
+        ]);
+
+        $this->assertEquals(
+            'store/me/here',
+            $node->get('file_field')->getFieldDefinition()->getSetting('file_directory')
+        );
+    }
+
+    /** @test */
     public function allowed_extensions(): void
     {
         $extensions = [

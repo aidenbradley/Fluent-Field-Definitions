@@ -26,6 +26,13 @@ class FileField extends FluentFieldDefinition
         return $this;
     }
 
+    public function fileStorageDirectory(string $directory): self
+    {
+        $this->setSetting('file_directory', $directory);
+
+        return $this;
+    }
+
     public function allowedFileExtensions(array $extensions): self
     {
         $this->setSetting('file_extensions', implode(' ', $extensions));
