@@ -32,4 +32,25 @@ class LinkField extends FluentFieldDefinition
 
         return $this;
     }
+
+    public function linkTextDisabled(): self
+    {
+        $this->setSetting('title', DRUPAL_DISABLED);
+
+        return $this;
+    }
+
+    public function linkTextOptional(): self
+    {
+        $this->setSetting('title', DRUPAL_OPTIONAL);
+
+        return $this;
+    }
+
+    public function linkTextRequired(): self
+    {
+        $this->setSetting('title', DRUPAL_REQUIRED);
+
+        return $this;
+    }
 }

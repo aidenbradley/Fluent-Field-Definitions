@@ -2,7 +2,6 @@
 
 namespace Drupal\Tests\fluent_field_definitions\Kernel;
 
-use Drupal\fluent_field_definitions\BooleanField;
 use Drupal\fluent_field_definitions\LinkField;
 use Drupal\link\LinkItemInterface;
 use Drupal\node\Entity\Node;
@@ -95,6 +94,72 @@ class LinkFieldTest extends FluentFieldDefinitionKernelTestBase
         $this->assertEquals(
             LinkItemInterface::LINK_GENERIC,
             $node->get('link_field')->getFieldDefinition()->getItemDefinition()->getSetting('link_type')
+        );
+    }
+
+    /** @test */
+    public function link_text_disabled(): void
+    {
+        $field = LinkField::make('link_field')->linkTextDisabled();
+
+        $this->installField($field, 'node');
+
+        $node = Node::create([
+            'nid' => 1,
+            'title' => 'test',
+            'type' => 'page',
+            'link_field' => '',
+        ]);
+        $node->save();
+        $node = Node::load(1);
+
+        $this->assertEquals(
+            DRUPAL_DISABLED,
+            $node->get('link_field')->getFieldDefinition()->getItemDefinition()->getSetting('title')
+        );
+    }
+
+    /** @test */
+    public function link_text_optional(): void
+    {
+        $field = LinkField::make('link_field')->linkTextOptional();
+
+        $this->installField($field, 'node');
+
+        $node = Node::create([
+            'nid' => 1,
+            'title' => 'test',
+            'type' => 'page',
+            'link_field' => '',
+        ]);
+        $node->save();
+        $node = Node::load(1);
+
+        $this->assertEquals(
+            DRUPAL_OPTIONAL,
+            $node->get('link_field')->getFieldDefinition()->getItemDefinition()->getSetting('title')
+        );
+    }
+
+    /** @test */
+    public function link_text_required(): void
+    {
+        $field = LinkField::make('link_field')->linkTextRequired();
+
+        $this->installField($field, 'node');
+
+        $node = Node::create([
+            'nid' => 1,
+            'title' => 'test',
+            'type' => 'page',
+            'link_field' => '',
+        ]);
+        $node->save();
+        $node = Node::load(1);
+
+        $this->assertEquals(
+            DRUPAL_REQUIRED,
+            $node->get('link_field')->getFieldDefinition()->getItemDefinition()->getSetting('title')
         );
     }
 }
