@@ -14,43 +14,31 @@ class LinkField extends FluentFieldDefinition
 
     public function onlyInternalUrls(): self
     {
-        $this->setSetting('link_type', LinkItemInterface::LINK_INTERNAL);
-
-        return $this;
+        return $this->setSetting('link_type', LinkItemInterface::LINK_INTERNAL);
     }
 
     public function onlyExternalUrls(): self
     {
-        $this->setSetting('link_type', LinkItemInterface::LINK_EXTERNAL);
-
-        return $this;
+        return $this->setSetting('link_type', LinkItemInterface::LINK_EXTERNAL);
     }
 
     public function internalAndExternalUrls(): self
     {
-        $this->setSetting('link_type', LinkItemInterface::LINK_GENERIC);
-
-        return $this;
+        return $this->setSetting('link_type', LinkItemInterface::LINK_GENERIC);
     }
 
     public function linkTextDisabled(): self
     {
-        $this->setSetting('title', DRUPAL_DISABLED);
-
-        return $this;
+        return $this->setSetting('title', DRUPAL_DISABLED);
     }
 
     public function linkTextOptional(): self
     {
-        $this->setSetting('title', DRUPAL_OPTIONAL);
-
-        return $this;
+        return $this->setSetting('title', DRUPAL_OPTIONAL);
     }
 
     public function linkTextRequired(): self
     {
-        $this->setSetting('title', DRUPAL_REQUIRED);
-
-        return $this;
+        return $this->setSetting('title', DRUPAL_REQUIRED);
     }
 }

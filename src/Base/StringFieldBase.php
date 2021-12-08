@@ -6,15 +6,11 @@ abstract class StringFieldBase extends FluentFieldDefinition
 {
     public function isCaseSensitive(): self
     {
-        $this->setSetting('case_sensitive', true);
-
-        return $this;
+        return $this->setSetting('case_sensitive', true);
     }
 
     public function notCaseSensitive(): self
     {
-        $this->setSetting('case_sensitive', false);
-
-        return $this;
+        return $this->setSetting('case_sensitive', false);
     }
 }

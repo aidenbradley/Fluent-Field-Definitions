@@ -13,15 +13,11 @@ class EntityReferenceField extends FluentFieldDefinition
 
     public function targetsEntityType(string $entityTypeId): self
     {
-        $this->setTargetEntityTypeId($entityTypeId);
-
-        return $this;
+        return $this->setTargetEntityTypeId($entityTypeId);
     }
 
     public function targetsBundle(string $bundle): self
     {
-        $this->setTargetBundle($bundle);
-
-        return $this;
+        return $this->setTargetBundle($bundle);
     }
 }

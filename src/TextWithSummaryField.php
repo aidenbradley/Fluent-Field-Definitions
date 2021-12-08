@@ -13,29 +13,21 @@ class TextWithSummaryField extends TextFieldBase
 
     public function summaryRequired(): self
     {
-        $this->setSetting('required_summary', true);
-
-        return $this;
+        return $this->setSetting('required_summary', true);
     }
 
     public function summaryNotRequired(): self
     {
-        $this->setSetting('required_summary', false);
-
-        return $this;
+        return $this->setSetting('required_summary', false);
     }
 
     public function displaySummary(): self
     {
-        $this->setSetting('display_summary', 1);
-
-        return $this;
+        return $this->setSetting('display_summary', 1);
     }
 
     public function dontDisplaySummary(): self
     {
-        $this->setSetting('display_summary', 0);
-
-        return $this;
+        return $this->setSetting('display_summary', 0);
     }
 }

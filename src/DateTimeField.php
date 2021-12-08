@@ -14,15 +14,11 @@ class DateTimeField extends FluentFieldDefinition
 
     public function storesDateOnly(): self
     {
-        $this->setSetting('datetime_type', DateTimeItem::DATETIME_TYPE_DATE);
-
-        return $this;
+        return $this->setSetting('datetime_type', DateTimeItem::DATETIME_TYPE_DATE);
     }
 
     public function storesDateTimeOnly(): self
     {
-        $this->setSetting('datetime_type', DateTimeItem::DATETIME_TYPE_DATETIME);
-
-        return $this;
+        return $this->setSetting('datetime_type', DateTimeItem::DATETIME_TYPE_DATETIME);
     }
 }

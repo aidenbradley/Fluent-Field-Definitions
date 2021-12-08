@@ -30,58 +30,42 @@ abstract class FluentFieldDefinition extends BaseFieldDefinition
 
     public function withConfigurableForm(): self
     {
-        $this->setDisplayConfigurable('form', true);
-
-        return $this;
+        return $this->setDisplayConfigurable('form', true);
     }
 
     public function nonConfigurableForm(): self
     {
-        $this->setDisplayConfigurable('form', false);
-
-        return $this;
+        return $this->setDisplayConfigurable('form', false);
     }
 
     public function withConfigurableView(): self
     {
-        $this->setDisplayConfigurable('view', true);
-
-        return $this;
+        return $this->setDisplayConfigurable('view', true);
     }
 
     public function nonConfigurableView(): self
     {
-        $this->setDisplayConfigurable('view', false);
-
-        return $this;
+        return $this->setDisplayConfigurable('view', false);
     }
 
     public function translatable(): self
     {
-        $this->setTranslatable(true);
-
-        return $this;
+        return $this->setTranslatable(true);
     }
 
     public function notTranslatable(): self
     {
-        $this->setTranslatable(false);
-
-        return $this;
+        return $this->setTranslatable(false);
     }
 
     public function revisionable(): self
     {
-        $this->setRevisionable(true);
-
-        return $this;
+        return $this->setRevisionable(true);
     }
 
     public function notRevisionable(): self
     {
-        $this->setRevisionable(false);
-
-        return $this;
+        return $this->setRevisionable(false);
     }
 
     public function setDefinitions(): self

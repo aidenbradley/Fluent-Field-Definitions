@@ -7,8 +7,6 @@ trait HasMaxLength
     /** @return static */
     public function maxLength(int $length)
     {
-        $this->setSetting('max_length', $length);
-
-        return $this;
+        return $this->setSetting('max_length', $length);
     }
 }

@@ -16,8 +16,6 @@ class StringField extends StringFieldBase
 
     public function isAscii(): self
     {
-        $this->setSetting('is_ascii', true);
-
-        return $this;
+        return $this->setSetting('is_ascii', true);
     }
 }
