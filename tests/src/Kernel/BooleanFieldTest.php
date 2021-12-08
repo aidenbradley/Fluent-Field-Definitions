@@ -3,32 +3,10 @@
 namespace Drupal\Tests\fluent_field_definitions\Kernel;
 
 use Drupal\fluent_field_definitions\BooleanField;
-use Drupal\node\Entity\Node;
-use Drupal\node\Entity\NodeType;
-use Drupal\Tests\fluent_field_definitions\Kernel\Base\FluentFieldDefinitionKernelTestBase;
+use Drupal\Tests\fluent_field_definitions\Kernel\Base\FluentFieldDefinitionNodeKernelTestBase;
 
-class BooleanFieldTest extends FluentFieldDefinitionKernelTestBase
+class BooleanFieldTest extends FluentFieldDefinitionNodeKernelTestBase
 {
-    /** @var string[] */
-    protected static $modules = [
-        'node',
-        'user',
-        'fluent_field_definitions',
-    ];
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->installEntitySchema('node');
-        $this->installEntitySchema('user');
-
-        NodeType::create([
-            'name' => 'page',
-            'type' => 'page',
-        ])->save();
-    }
-
     /** @test */
     public function on_label(): void
     {
@@ -37,14 +15,9 @@ class BooleanFieldTest extends FluentFieldDefinitionKernelTestBase
 
         $this->installField($field, 'node');
 
-        $node = Node::create([
-            'nid' => 1,
-            'title' => 'test',
-            'type' => 'page',
+        $node = $this->createNode([
             'boolean_field' => 1,
         ]);
-        $node->save();
-        $node = Node::load(1);
 
         $this->assertEquals(
             'We are on',
@@ -60,14 +33,9 @@ class BooleanFieldTest extends FluentFieldDefinitionKernelTestBase
 
         $this->installField($field, 'node');
 
-        $node = Node::create([
-            'nid' => 1,
-            'title' => 'test',
-            'type' => 'page',
+        $node = $this->createNode([
             'boolean_field' => 1,
         ]);
-        $node->save();
-        $node = Node::load(1);
 
         $this->assertEquals(
             'We are off',

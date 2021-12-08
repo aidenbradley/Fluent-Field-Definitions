@@ -4,32 +4,14 @@ namespace Drupal\Tests\fluent_field_definitions\Kernel;
 
 use Drupal\fluent_field_definitions\LinkField;
 use Drupal\link\LinkItemInterface;
-use Drupal\node\Entity\Node;
-use Drupal\node\Entity\NodeType;
-use Drupal\Tests\fluent_field_definitions\Kernel\Base\FluentFieldDefinitionKernelTestBase;
+use Drupal\Tests\fluent_field_definitions\Kernel\Base\FluentFieldDefinitionNodeKernelTestBase;
 
-class LinkFieldTest extends FluentFieldDefinitionKernelTestBase
+class LinkFieldTest extends FluentFieldDefinitionNodeKernelTestBase
 {
     /** @var string[] */
     protected static $modules = [
-        'node',
-        'user',
-        'fluent_field_definitions',
-        'link',
+        'link'
     ];
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->installEntitySchema('node');
-        $this->installEntitySchema('user');
-
-        NodeType::create([
-            'name' => 'page',
-            'type' => 'page',
-        ])->save();
-    }
 
     /** @test */
     public function only_internal_urls(): void
@@ -38,14 +20,9 @@ class LinkFieldTest extends FluentFieldDefinitionKernelTestBase
 
         $this->installField($field, 'node');
 
-        $node = Node::create([
-            'nid' => 1,
-            'title' => 'test',
-            'type' => 'page',
+        $node = $this->createNode([
             'link_field' => '',
         ]);
-        $node->save();
-        $node = Node::load(1);
 
         $this->assertEquals(
             LinkItemInterface::LINK_INTERNAL,
@@ -60,14 +37,9 @@ class LinkFieldTest extends FluentFieldDefinitionKernelTestBase
 
         $this->installField($field, 'node');
 
-        $node = Node::create([
-            'nid' => 1,
-            'title' => 'test',
-            'type' => 'page',
+        $node = $this->createNode([
             'link_field' => '',
         ]);
-        $node->save();
-        $node = Node::load(1);
 
         $this->assertEquals(
             LinkItemInterface::LINK_EXTERNAL,
@@ -82,14 +54,9 @@ class LinkFieldTest extends FluentFieldDefinitionKernelTestBase
 
         $this->installField($field, 'node');
 
-        $node = Node::create([
-            'nid' => 1,
-            'title' => 'test',
-            'type' => 'page',
+        $node = $this->createNode([
             'link_field' => '',
         ]);
-        $node->save();
-        $node = Node::load(1);
 
         $this->assertEquals(
             LinkItemInterface::LINK_GENERIC,
@@ -104,14 +71,9 @@ class LinkFieldTest extends FluentFieldDefinitionKernelTestBase
 
         $this->installField($field, 'node');
 
-        $node = Node::create([
-            'nid' => 1,
-            'title' => 'test',
-            'type' => 'page',
+        $node = $this->createNode([
             'link_field' => '',
         ]);
-        $node->save();
-        $node = Node::load(1);
 
         $this->assertEquals(
             DRUPAL_DISABLED,
@@ -126,14 +88,9 @@ class LinkFieldTest extends FluentFieldDefinitionKernelTestBase
 
         $this->installField($field, 'node');
 
-        $node = Node::create([
-            'nid' => 1,
-            'title' => 'test',
-            'type' => 'page',
+        $node = $this->createNode([
             'link_field' => '',
         ]);
-        $node->save();
-        $node = Node::load(1);
 
         $this->assertEquals(
             DRUPAL_OPTIONAL,
@@ -148,14 +105,9 @@ class LinkFieldTest extends FluentFieldDefinitionKernelTestBase
 
         $this->installField($field, 'node');
 
-        $node = Node::create([
-            'nid' => 1,
-            'title' => 'test',
-            'type' => 'page',
+        $node = $this->createNode([
             'link_field' => '',
         ]);
-        $node->save();
-        $node = Node::load(1);
 
         $this->assertEquals(
             DRUPAL_REQUIRED,

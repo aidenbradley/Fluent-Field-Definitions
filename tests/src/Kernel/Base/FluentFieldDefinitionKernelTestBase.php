@@ -12,6 +12,7 @@ abstract class FluentFieldDefinitionKernelTestBase extends KernelTestBase
         parent::setUp();
 
         $this->enableModules([
+            'fluent_field_definitions',
             'fluent_field_definitions_test',
             'system',
             'field',
