@@ -24,7 +24,7 @@ class IntegerFieldTest extends FluentFieldDefinitionNodeKernelTestBase
     /** @test */
     public function not_unsigned()
     {
-        $field = IntegerField::make('integer_field')->isUnsigned();
+        $field = IntegerField::make('integer_field')->notUnsigned();
 
         $this->installField($field, 'node');
 

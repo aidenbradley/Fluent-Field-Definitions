@@ -126,7 +126,7 @@ class ImageFieldTest extends FluentFieldDefinitionNodeKernelTestBase
     /** @test */
     public function disable_title_field(): void
     {
-        $field = ImageField::make('image_field')->enableTitleField();
+        $field = ImageField::make('image_field')->disableTitleField();
 
         $this->installField($field, 'node');
 
