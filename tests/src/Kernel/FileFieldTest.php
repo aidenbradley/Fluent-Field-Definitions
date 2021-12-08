@@ -58,6 +58,34 @@ class FileFieldTest extends FluentFieldDefinitionNodeKernelTestBase
     }
 
     /** @test */
+    public function enable_description_field()
+    {
+        $field = FileField::make('file_field')->enableDescriptionField();
+
+        $this->installField($field, 'node');
+
+        $node = $this->createNode([
+            'file_field' => '',
+        ]);
+
+        $this->assertTrue((bool) $node->get('file_field')->getFieldDefinition()->getSetting('description_field'));
+    }
+
+    /** @test */
+    public function disable_description_field()
+    {
+        $field = FileField::make('file_field')->disableDescriptionField();
+
+        $this->installField($field, 'node');
+
+        $node = $this->createNode([
+            'file_field' => '',
+        ]);
+
+        $this->assertFalse((bool) $node->get('file_field')->getFieldDefinition()->getSetting('description_field'));
+    }
+
+    /** @test */
     public function allowed_extensions(): void
     {
         $extensions = [

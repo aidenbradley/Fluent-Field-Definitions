@@ -26,6 +26,20 @@ class FileField extends FluentFieldDefinition
         return $this;
     }
 
+    public function enableDescriptionField(): self
+    {
+        $this->setSetting('description_field', 1);
+
+        return $this;
+    }
+
+    public function disableDescriptionField(): self
+    {
+        $this->setSetting('description_field', 0);
+
+        return $this;
+    }
+
     public function fileStorageDirectory(string $directory): self
     {
         $this->setSetting('file_directory', $directory);
