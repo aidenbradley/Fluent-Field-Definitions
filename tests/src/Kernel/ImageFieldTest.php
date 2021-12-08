@@ -54,6 +54,34 @@ class ImageFieldTest extends FluentFieldDefinitionNodeKernelTestBase
     }
 
     /** @test */
+    public function enable_alt_field(): void
+    {
+        $field = ImageField::make('image_field')->enableAltField();
+
+        $this->installField($field, 'node');
+
+        $node = $this->createFileAndNode();
+
+        $this->assertTrue(
+            $node->get('image_field')->getFieldDefinition()->getSetting('alt_field')
+        );
+    }
+
+    /** @test */
+    public function disable_alt_field(): void
+    {
+        $field = ImageField::make('image_field')->disableAltField();
+
+        $this->installField($field, 'node');
+
+        $node = $this->createFileAndNode();
+
+        $this->assertFalse(
+            $node->get('image_field')->getFieldDefinition()->getSetting('alt_field')
+        );
+    }
+
+    /** @test */
     public function alt_field_required(): void
     {
         $field = ImageField::make('image_field')->altFieldRequired();
@@ -78,6 +106,34 @@ class ImageFieldTest extends FluentFieldDefinitionNodeKernelTestBase
 
         $this->assertFalse(
             $node->get('image_field')->getFieldDefinition()->getSetting('alt_field_required')
+        );
+    }
+
+    /** @test */
+    public function enable_title_field(): void
+    {
+        $field = ImageField::make('image_field')->enableTitleField();
+
+        $this->installField($field, 'node');
+
+        $node = $this->createFileAndNode();
+
+        $this->assertTrue(
+            $node->get('image_field')->getFieldDefinition()->getSetting('title_field')
+        );
+    }
+
+    /** @test */
+    public function disable_title_field(): void
+    {
+        $field = ImageField::make('image_field')->enableTitleField();
+
+        $this->installField($field, 'node');
+
+        $node = $this->createFileAndNode();
+
+        $this->assertFalse(
+            $node->get('image_field')->getFieldDefinition()->getSetting('title_field')
         );
     }
 

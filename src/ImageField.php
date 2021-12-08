@@ -19,6 +19,16 @@ class ImageField extends FileField
         return $this->setSetting('min_resolution', $width . 'x' . $height);
     }
 
+    public function enableAltField(): self
+    {
+        return $this->setSetting('alt_field', true);
+    }
+
+    public function disableAltField(): self
+    {
+        return $this->setSetting('alt_field', false);
+    }
+
     public function altFieldRequired(): self
     {
         return $this->setSetting('alt_field_required', true);
@@ -27,6 +37,16 @@ class ImageField extends FileField
     public function altFieldNotRequired(): self
     {
         return $this->setSetting('alt_field_required', false);
+    }
+
+    public function enableTitleField(): self
+    {
+        return $this->setSetting('title_field', true);
+    }
+
+    public function disableTitleField(): self
+    {
+        return $this->setSetting('title_field', false);
     }
 
     public function titleFieldRequired(): self
