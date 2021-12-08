@@ -85,7 +85,7 @@ class DecimalFieldTest extends FluentFieldDefinitionNodeKernelTestBase
             'decimal_field' => 1,
         ]);
 
-        // Drupal will use the default storage settings for precision if one is not set, which is set to 10.
+        // Drupal will use the default storage settings for scale if one is not set, which is set to 2.
         $this->assertEquals(2, $node->get('decimal_field')->getFieldDefinition()->getSetting('scale'));
     }
 
@@ -103,7 +103,7 @@ class DecimalFieldTest extends FluentFieldDefinitionNodeKernelTestBase
             'decimal_field' => 1,
         ]);
 
-        // Drupal will use the default storage settings for precision if one is not set, which is set to 10.
+        // Drupal will use the default storage settings for scale if one is not set, which is set to 2.
         $this->assertEquals(2, $node->get('decimal_field')->getFieldDefinition()->getSetting('scale'));
     }
 }
