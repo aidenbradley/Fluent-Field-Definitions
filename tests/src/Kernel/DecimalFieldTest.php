@@ -43,7 +43,7 @@ class DecimalFieldTest extends FluentFieldDefinitionNodeKernelTestBase
      * @test
      * precision must be below 10
      */
-    public function validates_precision_below_32()
+    public function validates_precision_above_32()
     {
         $field = DecimalField::make('decimal_field')->precision(33);
 
@@ -91,7 +91,7 @@ class DecimalFieldTest extends FluentFieldDefinitionNodeKernelTestBase
 
     /**
      * @test
-     * scale must be above -1
+     * scale must be below 11
      */
     public function validates_scale_above_10()
     {
