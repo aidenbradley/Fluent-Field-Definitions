@@ -21,9 +21,28 @@ class IntegerField extends FluentFieldDefinition
         return $this->setSetting('unsigned', false);
     }
 
-    public function setSize(string $size): self
+    public function tinySize(): self
     {
-        // need to figure out what Drupal expects and accepts here
-        return $this->setSetting('size', $size);
+        return $this->setSetting('size', 'tiny');
+    }
+
+    public function smallSize(): self
+    {
+        return $this->setSetting('size', 'small');
+    }
+
+    public function mediumSize(): self
+    {
+        return $this->setSetting('size', 'medium');
+    }
+
+    public function normalSize(): self
+    {
+        return $this->setSetting('size', 'normal');
+    }
+
+    public function bigSize(): self
+    {
+        return $this->setSetting('size', 'big');
     }
 }
