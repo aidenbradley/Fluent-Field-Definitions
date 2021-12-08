@@ -56,6 +56,34 @@ abstract class FluentFieldDefinition extends BaseFieldDefinition
         return $this;
     }
 
+    public function translatable(): self
+    {
+        $this->setTranslatable(true);
+
+        return $this;
+    }
+
+    public function notTranslatable(): self
+    {
+        $this->setTranslatable(false);
+
+        return $this;
+    }
+
+    public function revisionable(): self
+    {
+        $this->setRevisionable(true);
+
+        return $this;
+    }
+
+    public function notRevisionable(): self
+    {
+        $this->setRevisionable(false);
+
+        return $this;
+    }
+
     public function setDefinitions(): self
     {
         return $this;
