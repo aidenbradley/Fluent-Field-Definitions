@@ -54,6 +54,27 @@ class FileField extends FluentFieldDefinition
         return $this;
     }
 
+    public function usePublicUriScheme(): self
+    {
+        $this->setUriScheme('public');
+
+        return $this;
+    }
+
+    public function usePrivateUriScheme(): self
+    {
+        $this->setUriScheme('private');
+
+        return $this;
+    }
+
+    public function setUriScheme(string $uriScheme): self
+    {
+        $this->setSetting('uri_scheme', $uriScheme);
+
+        return $this;
+    }
+
     public function maxFilesizeBytes(int $filesize): self
     {
         $this->setSetting('max_filesize', $filesize);

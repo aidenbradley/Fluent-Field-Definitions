@@ -86,6 +86,57 @@ class FileFieldTest extends FluentFieldDefinitionNodeKernelTestBase
     }
 
     /** @test */
+    public function use_public_uri_scheme(): void
+    {
+        $field = FileField::make('file_field')->usePublicUriScheme();
+
+        $this->installField($field, 'node');
+
+        $node = $this->createNode([
+            'file_field' => '',
+        ]);
+
+        $this->assertEquals(
+            'public',
+            $node->get('file_field')->getFieldDefinition()->getSetting('uri_scheme')
+        );
+    }
+
+    /** @test */
+    public function use_private_uri_scheme(): void
+    {
+        $field = FileField::make('file_field')->usePrivateUriScheme();
+
+        $this->installField($field, 'node');
+
+        $node = $this->createNode([
+            'file_field' => '',
+        ]);
+
+        $this->assertEquals(
+            'private',
+            $node->get('file_field')->getFieldDefinition()->getSetting('uri_scheme')
+        );
+    }
+
+    /** @test */
+    public function set_uri_scheme(): void
+    {
+        $field = FileField::make('file_field')->setUriScheme('custom');
+
+        $this->installField($field, 'node');
+
+        $node = $this->createNode([
+            'file_field' => '',
+        ]);
+
+        $this->assertEquals(
+            'custom',
+            $node->get('file_field')->getFieldDefinition()->getSetting('uri_scheme')
+        );
+    }
+
+    /** @test */
     public function allowed_extensions(): void
     {
         $extensions = [
