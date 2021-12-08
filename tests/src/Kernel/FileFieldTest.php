@@ -78,4 +78,55 @@ class FileFieldTest extends FluentFieldDefinitionNodeKernelTestBase
             $node->get('file_field')->getFieldDefinition()->getSetting('file_extensions')
         );
     }
+
+    /** @test */
+    public function max_filesize_bytes(): void
+    {
+        $field = FileField::make('file_field')->maxFilesizeBytes(512);
+
+        $this->installField($field, 'node');
+
+        $node = $this->createNode([
+            'file_field' => '',
+        ]);
+
+        $this->assertEquals(
+            512,
+            $node->get('file_field')->getFieldDefinition()->getSetting('max_filesize')
+        );
+    }
+
+    /** @test */
+    public function max_filesize_kilobytes(): void
+    {
+        $field = FileField::make('file_field')->maxFilesizeKilobytes(512);
+
+        $this->installField($field, 'node');
+
+        $node = $this->createNode([
+            'file_field' => '',
+        ]);
+
+        $this->assertEquals(
+            '512KB',
+            $node->get('file_field')->getFieldDefinition()->getSetting('max_filesize')
+        );
+    }
+
+    /** @test */
+    public function max_filesize_megabytes(): void
+    {
+        $field = FileField::make('file_field')->maxFilesizeMegabytes(512);
+
+        $this->installField($field, 'node');
+
+        $node = $this->createNode([
+            'file_field' => '',
+        ]);
+
+        $this->assertEquals(
+            '512MB',
+            $node->get('file_field')->getFieldDefinition()->getSetting('max_filesize')
+        );
+    }
 }

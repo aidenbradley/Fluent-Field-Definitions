@@ -39,4 +39,25 @@ class FileField extends FluentFieldDefinition
 
         return $this;
     }
+
+    public function maxFilesizeBytes(int $filesize): self
+    {
+        $this->setSetting('max_filesize', $filesize);
+
+        return $this;
+    }
+
+    public function maxFilesizeKilobytes(int $filesize): self
+    {
+        $this->setSetting('max_filesize', $filesize . 'KB');
+
+        return $this;
+    }
+
+    public function maxFilesizeMegabytes(int $filesize): self
+    {
+        $this->setSetting('max_filesize', $filesize . 'MB');
+
+        return $this;
+    }
 }
