@@ -28,47 +28,59 @@ abstract class FluentFieldDefinition extends BaseFieldDefinition
         );
     }
 
-    public function withConfigurableForm(): self
+    /** @return static */
+    public function withConfigurableForm()
     {
         return $this->setDisplayConfigurable('form', true);
     }
 
-    public function nonConfigurableForm(): self
+    /** @return static */
+    public function nonConfigurableForm()
     {
         return $this->setDisplayConfigurable('form', false);
     }
 
-    public function withConfigurableView(): self
+    /** @return static */
+    abstract public function setFormDisplayOptions(\Closure $closure);
+
+    /** @return static */
+    public function withConfigurableView()
     {
         return $this->setDisplayConfigurable('view', true);
     }
 
-    public function nonConfigurableView(): self
+    /** @return static */
+    public function nonConfigurableView()
     {
         return $this->setDisplayConfigurable('view', false);
     }
 
-    public function translatable(): self
+    /** @return static */
+    public function translatable()
     {
         return $this->setTranslatable(true);
     }
 
-    public function notTranslatable(): self
+    /** @return static */
+    public function notTranslatable()
     {
         return $this->setTranslatable(false);
     }
 
-    public function revisionable(): self
+    /** @return static */
+    public function revisionable()
     {
         return $this->setRevisionable(true);
     }
 
-    public function notRevisionable(): self
+    /** @return static */
+    public function notRevisionable()
     {
         return $this->setRevisionable(false);
     }
 
-    public function setDefinitions(): self
+    /** @return static */
+    public function setDefinitions()
     {
         return $this;
     }
