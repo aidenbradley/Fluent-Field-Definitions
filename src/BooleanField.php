@@ -21,4 +21,13 @@ class BooleanField extends FluentFieldDefinition
     {
         return $this->setSetting('off_label', new TranslatableMarkup($value));
     }
+
+    public function setFormDisplayOptions(\Closure $closure): self
+    {
+        $formDisplayOptions = $closure();
+
+        $this->setDisplayOptions('form', $formDisplayOptions->toArray());
+
+        return $this;
+    }
 }
